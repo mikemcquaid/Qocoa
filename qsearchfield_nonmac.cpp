@@ -48,3 +48,18 @@ void QSearchField::setText(const QString &text)
 {
     pimpl->lineEdit->setText(text);
 }
+
+void QSearchField::setPlaceholderText(const QString& text)
+{
+    pimpl->lineEdit->setInactiveText(text);
+}
+
+void QSearchField::clear()
+{
+    pimpl->lineEdit->clear();
+}
+
+QString QSearchField::text() const
+{
+    return pimpl->lineEdit->text();
+}
