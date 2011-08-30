@@ -21,6 +21,7 @@ THE SOFTWARE.
 */
 
 #include "qsearchfield.h"
+
 #include "qocoa_mac.h"
 
 #import "Foundation/NSAutoreleasePool.h"

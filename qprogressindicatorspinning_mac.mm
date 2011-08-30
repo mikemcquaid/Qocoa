@@ -20,9 +20,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-#include "qocoa_mac.h"
-
 #include "qprogressindicatorspinning.h"
+
+#include "qocoa_mac.h"
 
 #import "Foundation/NSAutoreleasePool.h"
 #import "AppKit/NSProgressIndicator.h"
