@@ -19,7 +19,7 @@ public slots:
     void clear();
 signals:
     void textChanged(const QString &text);
-    void returnPressed();
+    void editingFinished();
 
 private:
     friend class QSearchFieldPrivate;

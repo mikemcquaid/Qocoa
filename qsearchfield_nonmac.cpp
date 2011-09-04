@@ -37,6 +37,8 @@ QSearchField::QSearchField(QWidget *parent) : QWidget(parent)
     QLineEdit *lineEdit = new QLineEdit(this);
     connect(lineEdit, SIGNAL(textChanged(QString)),
             this, SIGNAL(textChanged(QString)));
+    connect(lineEdit, SIGNAL(editingFinished()),
+            this, SIGNAL(editingFinished()));
     pimpl = new QSearchFieldPrivate(lineEdit);
 
     QVBoxLayout *layout = new QVBoxLayout(this);

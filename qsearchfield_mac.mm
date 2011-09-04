@@ -21,7 +21,6 @@ THE SOFTWARE.
 */
 
 #include "qsearchfield.h"
-
 #include "qocoa_mac.h"
 
 #import "Foundation/NSAutoreleasePool.h"
@@ -41,7 +40,7 @@ public:
 
     void textDidEndEditing()
     {
-        emit qSearchField->returnPressed();
+        emit qSearchField->editingFinished();
     }
 
     QSearchField *qSearchField;
@@ -84,6 +83,7 @@ QSearchField::QSearchField(QWidget *parent) : QWidget(parent)
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
 
     [search release];
+
     [pool drain];
 }
 
