@@ -37,6 +37,8 @@ QSearchField::QSearchField(QWidget *parent) : QWidget(parent)
     QLineEdit *lineEdit = new QLineEdit(this);
     connect(lineEdit, SIGNAL(textChanged(QString)),
             this, SIGNAL(textChanged(QString)));
+    connect(lineEdit, SIGNAL(editingFinished()),
+            this, SIGNAL(editingFinished()));
     pimpl = new QSearchFieldPrivate(lineEdit);
 
     QVBoxLayout *layout = new QVBoxLayout(this);
@@ -47,4 +49,19 @@ QSearchField::QSearchField(QWidget *parent) : QWidget(parent)
 void QSearchField::setText(const QString &text)
 {
     pimpl->lineEdit->setText(text);
+}
+
+void QSearchField::setPlaceholderText(const QString& text)
+{
+    pimpl->lineEdit->setInactiveText(text);
+}
+
+void QSearchField::clear()
+{
+    pimpl->lineEdit->clear();
+}
+
+QString QSearchField::text() const
+{
+    return pimpl->lineEdit->text();
 }

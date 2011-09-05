@@ -20,9 +20,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-#include "qocoa_mac.h"
-
 #include "qsearchfield.h"
+
+#include "qocoa_mac.h"
 
 #import "Foundation/NSAutoreleasePool.h"
 #import "Foundation/NSNotification.h"
@@ -38,6 +38,12 @@ public:
     {
         emit qSearchField->textChanged(text);
     }
+
+    void textDidEndEditing()
+    {
+        emit qSearchField->editingFinished();
+    }
+
     QSearchField *qSearchField;
     NSSearchField *nsSearchField;
 };
@@ -48,11 +54,16 @@ public:
     QSearchFieldPrivate* pimpl;
 }
 -(void)controlTextDidChange:(NSNotification*)notification;
+-(void)controlTextDidEndEditing:(NSNotification*)aNotification;
 @end
 
 @implementation QSearchFieldDelegate
 -(void)controlTextDidChange:(NSNotification*)notification {
     pimpl->textDidChange(toQString([[notification object] stringValue]));
+}
+
+-(void)controlTextDidEndEditing:(NSNotification*)notification {
+    pimpl->textDidEndEditing();
 }
 @end
 
@@ -82,4 +93,21 @@ void QSearchField::setText(const QString &text)
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     [pimpl->nsSearchField setStringValue:fromQString(text)];
     [pool drain];
+}
+
+void QSearchField::setPlaceholderText(const QString& text)
+{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    [[pimpl->nsSearchField cell] setPlaceholderString:fromQString(text)];
+    [pool drain];
+}
+
+void QSearchField::clear()
+{
+    [pimpl->nsSearchField setStringValue:@""];
+}
+
+QString QSearchField::text() const
+{
+    return toQString([pimpl->nsSearchField stringValue]);
 }
