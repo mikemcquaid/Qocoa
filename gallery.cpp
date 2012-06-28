@@ -63,7 +63,6 @@ Gallery::Gallery(QWidget *parent) : QWidget(parent)
     layout->addWidget(roundedDisclosureButton);
 
 #ifdef __MAC_10_7
-    aldkjaslkfjsdkf
     QButton *inlineButton = new QButton(this, QButton::Inline);
     inlineButton->setText("Inline Button");
     layout->addWidget(inlineButton);
