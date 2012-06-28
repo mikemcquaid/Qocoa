@@ -58,11 +58,13 @@ Gallery::Gallery(QWidget *parent) : QWidget(parent)
     QButton *roundedDisclosureButton = new QButton(this, QButton::RoundedDisclosure);
     layout->addWidget(roundedDisclosureButton);
 
-#ifdef MAC_OS_X_VERSION_10_7
+#ifdef __MAC_10_7
+    aldkjaslkfjsdkf
     QButton *inlineButton = new QButton(this, QButton::Inline);
     inlineButton->setText("Inline Button");
     layout->addWidget(inlineButton);
 #endif
+
 
     QProgressIndicatorSpinning *progressIndicatorSpinning = new QProgressIndicatorSpinning(this);
     progressIndicatorSpinning->animate();
