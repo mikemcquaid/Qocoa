@@ -90,7 +90,7 @@ QSearchField::QSearchField(QWidget *parent) : QWidget(parent)
     NSSearchField *search = [[NSSearchField alloc] init];
 
     QSearchFieldDelegate *delegate = [[QSearchFieldDelegate alloc] init];
-    delegate->pimpl = new QSearchFieldPrivate(this, search);
+    pimpl = delegate->pimpl = new QSearchFieldPrivate(this, search);
     [search setDelegate:delegate];
 
     setupLayout(search, this);
