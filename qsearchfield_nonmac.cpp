@@ -113,6 +113,15 @@ void QSearchField::clear()
     pimpl->lineEdit->clear();
 }
 
+void QSearchField::selectAll()
+{
+    Q_ASSERT(pimpl && pimpl->lineEdit);
+    if (!(pimpl && pimpl->lineEdit))
+        return;
+
+    pimpl->lineEdit->selectAll();
+}
+
 QString QSearchField::text() const
 {
     Q_ASSERT(pimpl && pimpl->lineEdit);
