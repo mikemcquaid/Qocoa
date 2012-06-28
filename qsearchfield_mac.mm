@@ -46,6 +46,12 @@ public:
             emit qSearchField->editingFinished();
     }
 
+    void returnPressed()
+    {
+        if (qSearchField)
+            emit qSearchField->returnPressed();
+    }
+
     QPointer<QSearchField> qSearchField;
     NSSearchField *nsSearchField;
 };
@@ -71,6 +77,9 @@ public:
     // No Q_ASSERT here as it is called on destruction.
     if (pimpl)
         pimpl->textDidEndEditing();
+
+    if ([[[notification userInfo] objectForKey:@"NSTextMovement"] intValue] == NSReturnTextMovement)
+        pimpl->returnPressed();
 }
 @end
 
@@ -81,7 +90,7 @@ QSearchField::QSearchField(QWidget *parent) : QWidget(parent)
     NSSearchField *search = [[NSSearchField alloc] init];
 
     QSearchFieldDelegate *delegate = [[QSearchFieldDelegate alloc] init];
-    delegate->pimpl = new QSearchFieldPrivate(this, search);
+    pimpl = delegate->pimpl = new QSearchFieldPrivate(this, search);
     [search setDelegate:delegate];
 
     setupLayout(search, this);
@@ -126,6 +135,15 @@ void QSearchField::clear()
     emit textChanged(QString());
 }
 
+void QSearchField::selectAll()
+{
+    Q_ASSERT(pimpl);
+    if (!pimpl)
+        return;
+
+    [pimpl->nsSearchField performSelector:@selector(selectText:)];
+}
+
 QString QSearchField::text() const
 {
     Q_ASSERT(pimpl);
@@ -133,6 +151,14 @@ QString QSearchField::text() const
         return QString();
 
     return toQString([pimpl->nsSearchField stringValue]);
+}
+
+QString QSearchField::placeholderText() const {
+    Q_ASSERT(pimpl);
+    if (!pimpl)
+        return QString();
+
+    return toQString([[pimpl->nsSearchField cell] placeholderString]);
 }
 
 void QSearchField::resizeEvent(QResizeEvent *resizeEvent)
