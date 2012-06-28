@@ -135,6 +135,14 @@ QString QSearchField::text() const
     return toQString([pimpl->nsSearchField stringValue]);
 }
 
+QString QSearchField::placeholderText() const {
+    Q_ASSERT(pimpl);
+    if (!pimpl)
+        return QString();
+
+    return toQString([[pimpl->nsSearchField cell] placeholderString]);
+}
+
 void QSearchField::resizeEvent(QResizeEvent *resizeEvent)
 {
     QWidget::resizeEvent(resizeEvent);

@@ -120,6 +120,18 @@ QString QSearchField::text() const
     return pimpl->lineEdit->text();
 }
 
+QString QSearchField::placeholderText() const {
+    Q_ASSERT(pimpl && pimpl->lineEdit);
+    if (!(pimpl && pimpl->lineEdit))
+        return QString();
+
+#if QT_VERSION >= 0x040700
+    return pimpl->lineEdit->placeholderText(text);
+#else
+    return QString();
+#endif
+}
+
 void QSearchField::resizeEvent(QResizeEvent *resizeEvent)
 {
     Q_ASSERT(pimpl && pimpl->clearButton && pimpl->lineEdit);
