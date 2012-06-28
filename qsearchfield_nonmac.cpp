@@ -137,7 +137,7 @@ QString QSearchField::placeholderText() const {
         return QString();
 
 #if QT_VERSION >= 0x040700
-    return pimpl->lineEdit->placeholderText(text);
+    return pimpl->lineEdit->placeholderText();
 #else
     return QString();
 #endif
