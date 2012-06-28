@@ -14,6 +14,10 @@ Gallery::Gallery(QWidget *parent) : QWidget(parent)
     QSearchField *searchField = new QSearchField(this);
     layout->addWidget(searchField);
 
+    QSearchField *searchFieldPlaceholder = new QSearchField(this);
+    searchFieldPlaceholder->setPlaceholderText("Placeholder text");
+    layout->addWidget(searchFieldPlaceholder);
+
     QButton *roundedButton = new QButton(this, QButton::Rounded);
     roundedButton->setText("Button");
     layout->addWidget(roundedButton);
