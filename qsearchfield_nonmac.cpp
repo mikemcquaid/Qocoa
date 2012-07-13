@@ -143,6 +143,18 @@ QString QSearchField::placeholderText() const {
 #endif
 }
 
+void QSearchField::setFocus(Qt::FocusReason reason)
+{
+    Q_ASSERT(pimpl && pimpl->lineEdit);
+    if (pimpl && pimpl->lineEdit)
+        pimpl->lineEdit->setFocus(reason);
+}
+
+void QSearchField::setFocus()
+{
+    setFocus(Qt::OtherFocusReason);
+}
+
 void QSearchField::resizeEvent(QResizeEvent *resizeEvent)
 {
     Q_ASSERT(pimpl && pimpl->clearButton && pimpl->lineEdit);

@@ -153,12 +153,28 @@ QString QSearchField::text() const
     return toQString([pimpl->nsSearchField stringValue]);
 }
 
-QString QSearchField::placeholderText() const {
+QString QSearchField::placeholderText() const
+{
     Q_ASSERT(pimpl);
     if (!pimpl)
         return QString();
 
     return toQString([[pimpl->nsSearchField cell] placeholderString]);
+}
+
+void QSearchField::setFocus(Qt::FocusReason reason)
+{
+    Q_ASSERT(pimpl);
+    if (!pimpl)
+        return;
+
+    if ([pimpl->nsSearchField acceptsFirstResponder])
+        [[pimpl->nsSearchField window] makeFirstResponder: pimpl->nsSearchField];
+}
+
+void QSearchField::setFocus()
+{
+    setFocus(Qt::OtherFocusReason);
 }
 
 void QSearchField::resizeEvent(QResizeEvent *resizeEvent)
