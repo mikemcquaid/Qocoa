@@ -86,6 +86,15 @@ public:
 }
 @end
 
+namespace {
+
+static const unsigned short kKeycodeA = 0;
+static const unsigned short kKeycodeX = 7;
+static const unsigned short kKeycodeC = 8;
+static const unsigned short kKeycodeV = 9;
+
+}  // namespace
+
 @interface QocoaSearchField : NSSearchField
 -(BOOL)performKeyEquivalent:(NSEvent*)event;
 @end
@@ -95,24 +104,24 @@ public:
     if ([event type] == NSKeyDown && [event modifierFlags] & NSCommandKeyMask)
     {
         const unsigned short keyCode = [event keyCode];
-        if (keyCode == 0)  // Cmd+a
+        if (keyCode == kKeycodeA)  // Cmd+a
         {
             [self performSelector:@selector(selectText:)];
             return YES;
         }
-        else if (keyCode == 8)  // Cmd+c
+        else if (keyCode == kKeycodeC)  // Cmd+c
         {
             QClipboard* clipboard = QApplication::clipboard();
             clipboard->setText(toQString([self stringValue]));
             return YES;
         }
-        else if (keyCode == 9)  // Cmd+v
+        else if (keyCode == kKeycodeV)  // Cmd+v
         {
             QClipboard* clipboard = QApplication::clipboard();
             [self setStringValue:fromQString(clipboard->text())];
             return YES;
         }
-        else if (keyCode == 7)  // Cmd+x
+        else if (keyCode == kKeycodeX)  // Cmd+x
         {
             QClipboard* clipboard = QApplication::clipboard();
             clipboard->setText(toQString([self stringValue]));
