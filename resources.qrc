@@ -3,5 +3,7 @@
         <file>user-home.png</file>
         <file>user-trash.png</file>
         <file>bookmarks.png</file>
+	<file>button_knob.png</file>
+	<file>button_surround.png</file>
     </qresource>
 </RCC>

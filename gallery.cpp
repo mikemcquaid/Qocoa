@@ -15,6 +15,8 @@
 #include "qbutton.h"
 #include "qprogressindicatorspinning.h"
 #include "qtoolbartabdialog.h"
+#include "qslidebutton.h"
+
 
 Gallery::Gallery(QWidget *parent) : QWidget(parent), m_toolbarTabDialog(0)
 {
@@ -81,6 +83,9 @@ Gallery::Gallery(QWidget *parent) : QWidget(parent), m_toolbarTabDialog(0)
     QProgressIndicatorSpinning *progressIndicatorSpinning = new QProgressIndicatorSpinning(this);
     progressIndicatorSpinning->animate();
     layout->addWidget(progressIndicatorSpinning);
+
+    QSlideButton* slider = new QSlideButton(this);
+    layout->addWidget(slider);
 
     QButton *openTabWidget = new QButton(this, QButton::Rounded);
     openTabWidget->setText("Toolbar Tab Widget");
