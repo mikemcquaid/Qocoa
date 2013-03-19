@@ -150,6 +150,20 @@ QSearchField::QSearchField(QWidget *parent) : QWidget(parent)
     [pool drain];
 }
 
+void QSearchField::setMenu(QMenu *menu)
+{
+    Q_ASSERT(pimpl);
+    if (!pimpl)
+        return;
+
+    NSMenu *nsMenu = menu->macMenu();
+    [[pimpl->nsSearchField cell] setSearchMenuTemplate:nsMenu];
+}
+
+void QSearchField::popupMenu()
+{
+}
+
 void QSearchField::setText(const QString &text)
 {
     Q_ASSERT(pimpl);

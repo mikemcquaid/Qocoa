@@ -28,7 +28,9 @@ For each class you want to use copy the [`qocoa_mac.h`](https://github.com/mikem
 Qocoa is licensed under the [MIT License](http://en.wikipedia.org/wiki/MIT_License).
 The full license text is available in [LICENSE.txt](https://github.com/mikemcquaid/Qocoa/blob/master/LICENSE.txt).
 
-The icons are taken from the [Oxygen Project](http://www.oxygen-icons.org/) and are licensed under the [Creative Commons Attribution-ShareAlike 3.0 License](http://creativecommons.org/licenses/by-sa/3.0/).
+Magnifier and EditClear icons taken from [QtCreator](http://qt-project.org/), licensed under [LGPL](http://www.gnu.org/copyleft/lesser.html).
+
+Other icons are taken from the [Oxygen Project](http://www.oxygen-icons.org/) and are licensed under the [Creative Commons Attribution-ShareAlike 3.0 License](http://creativecommons.org/licenses/by-sa/3.0/).
 
 ## Gallery
 ![Qocoa Gallery](https://github.com/mikemcquaid/Qocoa/raw/master/gallery.png)
