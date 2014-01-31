@@ -1,17 +1,23 @@
 SOURCES += main.cpp\
-           gallery.cpp \
+           gallery.cpp
 
 HEADERS += gallery.h \
            qocoa_mac.h \
            qsearchfield.h \
            qbutton.h \
            qprogressindicatorspinning.h \
+           qtoolbartabdialog.h \
+           qslidebutton.h
+
+RESOURCES += resources.qrc
+CONFIG += debug
 
 mac {
-    OBJECTIVE_SOURCES += qsearchfield_mac.mm qbutton_mac.mm qprogressindicatorspinning_mac.mm
+    OBJECTIVE_SOURCES += qsearchfield_mac.mm qbutton_mac.mm qprogressindicatorspinning_mac.mm qtoolbartabdialog_mac.mm qslidebutton_mac.mm
     LIBS += -framework Foundation -framework Appkit
     QMAKE_CFLAGS += -mmacosx-version-min=10.6
 } else {
-    SOURCES += qsearchfield_nonmac.cpp qbutton_nonmac.cpp qprogressindicatorspinning_nonmac.cpp
+    HEADERS += qtoolbartabdialog_nonmac.cpp
+    SOURCES += qsearchfield_nonmac.cpp qbutton_nonmac.cpp qprogressindicatorspinning_nonmac.cpp qtoolbartabdialog_nonmac.cpp qslidebutton_nonmac.cpp
     RESOURCES += qsearchfield_nonmac.qrc qprogressindicatorspinning_nonmac.qrc
 }
