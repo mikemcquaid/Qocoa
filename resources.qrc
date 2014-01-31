@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>user-home.png</file>
+        <file>user-trash.png</file>
+        <file>bookmarks.png</file>
+    </qresource>
+</RCC>
